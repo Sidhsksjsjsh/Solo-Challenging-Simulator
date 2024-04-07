@@ -144,10 +144,8 @@ T4:Toggle("Auto kill monster",false,function(value)
     var.edt = value
     while wait() do
       if var.edt == false then break end
-      gch(workspace.activity.Activity_eventenemy,function(v)
-          gch(v.enemys,function(ry)
-              game:GetService("ReplicatedStorage")["Events"]["Activity"]["EventEnemy"]["HurtEnemyEvent"]:FireServer(ry:GetAttribute("idx"),ry:GetAttribute("id"))
-          end)
+      gch(workspace.activity.Activity_eventenemy["ID_1"].enemys,function(v)
+          game:GetService("ReplicatedStorage")["Events"]["Activity"]["EventEnemy"]["HurtEnemyEvent"]:FireServer(v:GetAttribute("idx"),v:GetAttribute("id"))
       end)
     end
 end)
