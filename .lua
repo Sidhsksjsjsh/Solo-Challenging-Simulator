@@ -28,8 +28,8 @@ local var = {
   edt = false,
   s = 0
 }
-
-lib:AddTable(workspace["enemy"],var.enemy.table)
+--workspace.enemy.worldboss
+lib:AddTable(workspace.enemy,var.enemy.table)
 
 local function gch(path,funct)
   for i,v in pairs(path:GetChildren()) do
