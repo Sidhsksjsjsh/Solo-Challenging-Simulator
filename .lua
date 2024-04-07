@@ -126,7 +126,7 @@ end)
 
 T3:Toggle("Auto hatching",false,function(value)
     var.egg.toggle = value
-    while wait() do
+    while wait(1) do
       if var.egg.toggle == false then break end
       game:GetService("ReplicatedStorage")["Events"]["RandomItemGenerator"]["GenerateRandomItemEvent"]:FireServer(1,var.egg.s)
     end
