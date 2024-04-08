@@ -6,7 +6,7 @@ local T3 = wndw:Tab("Hatch")
 local T4 = wndw:Tab("Event Dungeon",true)
 local T5 = wndw:Tab("Unlock & Teleports")
 local T6 = wndw:Tab("Level up")
-local T7 = wndw:Tab("System Manipulator")
+local T7 = wndw:Tab("System Manipulator",true)
 
 local workspace = game:GetService("Workspace")
 local var = {
