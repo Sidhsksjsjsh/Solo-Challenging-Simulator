@@ -5,6 +5,8 @@ local T2 = wndw:Tab("Enemies",true)
 local T3 = wndw:Tab("Hatch")
 local T4 = wndw:Tab("Event Dungeon",true)
 local T5 = wndw:Tab("Unlock & Teleports")
+local T6 = wndw:Tab("Level up")
+local T7 = wndw:Tab("System Manipulator")
 
 local workspace = game:GetService("Workspace")
 local var = {
@@ -26,7 +28,12 @@ local var = {
     toggle2 = false
   },
   edt = false,
-  s = 0
+  s = 0,
+  upl = {
+    table = {"Soldier","Mask Sniper","Karate Master","Kendo Master","Solo Leveling","Ichigo","Ice"},
+    toggle = false,
+    s = "Soldier"
+  }
 }
 --workspace.enemy.worldboss
 lib:AddTable(workspace.enemy,var.enemy.table)
@@ -162,4 +169,42 @@ T5:Button("Unlock all maps",function()
     for array = 1,50 do
       game:GetService("ReplicatedStorage")["Events"]["Map"]["UnlockMapEvent"]:FireServer(array)
     end
+end)
+
+T6:Dropdown("Choose hero",var.upl.table,function(value)
+    var.upl.s = value
+end)
+
+T6:Toggle("Auto level up",false,function(value)
+    var.upl.toggle = value
+    while wait() do
+      if var.upl.toggle == false then break end
+      if var.upl.s == "Soldier" then
+        game:GetService("ReplicatedStorage")["Events"]["Follows"]["LevelUpItemEvent"]:FireServer(1)
+      elseif var.upl.s == "Mask Sniper" then
+        game:GetService("ReplicatedStorage")["Events"]["Follows"]["LevelUpItemEvent"]:FireServer(2)
+      elseif var.upl.s == "Karate Master" then
+        game:GetService("ReplicatedStorage")["Events"]["Follows"]["LevelUpItemEvent"]:FireServer(3)
+      elseif var.upl.s == "Kendo Master" then
+        game:GetService("ReplicatedStorage")["Events"]["Follows"]["LevelUpItemEvent"]:FireServer(4)
+      elseif var.upl.s == "Solo Leveling" then
+        game:GetService("ReplicatedStorage")["Events"]["Follows"]["LevelUpItemEvent"]:FireServer(5)
+      elseif var.upl.s == "Ichigo" then
+        game:GetService("ReplicatedStorage")["Events"]["Follows"]["LevelUpItemEvent"]:FireServer(6)
+      elseif var.upl.s == "Ice" then
+        game:GetService("ReplicatedStorage")["Events"]["Follows"]["LevelUpItemEvent"]:FireServer(7)
+      end
+    end
+end)
+
+T7:Button("Infinite power",function()
+    game:GetService("ReplicatedStorage")["Events"]["Rewards"]["GetRewardEvent"]:FireServer({1,math.huge})
+end)
+
+T7:Button("Infinite rainbow stones",function()
+    game:GetService("ReplicatedStorage")["Events"]["Rewards"]["GetRewardEvent"]:FireServer({3,math.huge})
+end)
+
+T7:Button("Infinite gems",function()
+    game:GetService("ReplicatedStorage")["Events"]["Rewards"]["GetRewardEvent"]:FireServer({2,math.huge})
 end)
